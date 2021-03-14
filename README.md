@@ -1,4 +1,4 @@
 # django-rest-framework-tutorial
 
-## Link
+## link
 - [quickstart](https://www.django-rest-framework.org/tutorial/quickstart/)
