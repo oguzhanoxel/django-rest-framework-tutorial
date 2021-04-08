@@ -15,15 +15,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.routers import DefaultRouter
 
-from apps.snippets import views
+from apps.snippets.views import SnippetViewSet
+from apps.users.views import UserViewSet
+
+
+router = DefaultRouter()
+router.register(r'snippets', SnippetViewSet)
+router.register(r'users', UserViewSet)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('users/', include('apps.users.urls')),
     path('quickstart/', include('apps.quickstart.urls')),
-    path('', views.api_root),
-    path('snippets/', include('apps.snippets.urls')),
+    path('', include(router.urls)),
 ]
 
 urlpatterns += [
